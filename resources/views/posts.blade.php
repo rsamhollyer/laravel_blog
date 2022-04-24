@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+{{-- @extends('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app.css">
-    <title>My Blog</title>
-</head>
+@section('content')
+    @foreach ($posts as $post) --}}
+{{-- <article class="{{ $loop->even ? 'foobar' : '' }}">
+            <a href="/posts/{{ $post->slug }}">
+                <h1>{{ $post->title }}</h1>
+            </a>
 
-<body>
+            <div>
+                {{ $post->excerpt }}
+            </div>
 
+        </article>
+    @endforeach
+@endsection --}}
+{{-- This section above does not take advantage of the blade component syntax --}}
+
+
+<x-layout>
     @foreach ($posts as $post)
         {{-- There's an implicit $loop variable that is created for PHP compilation. Use that to check things like what loop you're on, if it's an even or odd loop, how many total loops you need, etc. --}}
         <article class="{{ $loop->even ? 'foobar' : '' }}">
@@ -23,8 +30,5 @@
             </div>
 
         </article>
-    @endforeach;
-
-</body>
-
-</html>
+    @endforeach
+</x-layout>
