@@ -19,15 +19,20 @@
 
 <x-layout>
     @foreach ($posts as $post)
-        {{-- There's an implicit $loop variable that is created for PHP compilation. Use that to check things like what loop you're on, if it's an even or odd loop, how many total loops you need, etc. --}}
-        <article class="{{ $loop->even ? 'foobar' : '' }}">
-
+        <article>
             <a href="/posts/{{ $post->slug }}">
                 <h1>{{ $post->title }}</h1>
             </a>
 
             <span>
-                <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
+                By
+                <a href="/authors/{{ $post->author->username }}">
+                    {{ $post->author->name }}
+                </a>
+                in
+                <a href="/categories/{{ $post->category->slug }}">
+                    {{ $post->category->name }}
+                </a>
             </span>
 
             <div>
