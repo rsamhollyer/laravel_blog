@@ -9,8 +9,7 @@ use Mews\Purifier\Facades\Purifier;
 class Post extends Model {
     use HasFactory;
 
-    protected $fillable = ['title', 'excerpt', 'body'];
-    // protected $guarded = ['id'];
+    protected $guarded = [];
 
     public function setBodyAttribute($value) {
         $this->attributes['body'] = Purifier::clean($value);
