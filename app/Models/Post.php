@@ -4,18 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Mews\Purifier\Facades\Purifier;
+use Mews\Purifier\Casts\CleanHtml;
 
 class Post extends Model {
     use HasFactory;
 
     protected $guarded = [];
-
-    public function setBodyAttribute($value) {
-        $this->attributes['body'] = Purifier::clean($value);
-    }
+    protected $casts = [
+        'body' => CleanHtml::class,
+    ];
 
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }
