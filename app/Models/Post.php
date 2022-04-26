@@ -14,6 +14,9 @@ class Post extends Model {
         'body' => CleanHtml::class,
     ];
 
+    protected $with = ['category', 'author'];
+
+
     public function category() {
         return $this->belongsTo(Category::class);
     }
