@@ -16,10 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  $posts = Post::latest()->get();
+  $posts = Post::latest();
   $categories = Category::all();
+  $search = request('search');
+
+  if ($search) {
+    $posts
+      ->where('title', 'like', "%{$search}%")
+      ->orWhere('body', 'like', "%{$search}%");
+  }
+
   return view("posts", [
-    'posts' => $posts,
+    'posts' => $posts->get(),
     'categories' => $categories
   ]);
 })->name('home');;
