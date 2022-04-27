@@ -7,21 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 use Mews\Purifier\Casts\CleanHtml;
 
 class Post extends Model {
-    use HasFactory;
+  use HasFactory;
 
-    protected $guarded = [];
-    protected $casts = [
-        'body' => CleanHtml::class,
-    ];
+  protected $guarded = [];
+  protected $casts = [
+    'body' => CleanHtml::class,
+  ];
 
-    protected $with = ['category', 'author'];
+  protected $with = ['category', 'author'];
 
+  public function scopeFilter($query, array $filters) {
 
-    public function category() {
-        return $this->belongsTo(Category::class);
+    if ($filters['search'] ?? false) {
+      $query
+        ->where('title', 'like', "%{$filters['search']}%")
+        ->orWhere('body', 'like', "%{$filters['search']}%");
     }
 
-    public function author() {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+    return $query;
+  }
+
+  public function category() {
+    return $this->belongsTo(Category::class);
+  }
+
+  public function author() {
+    return $this->belongsTo(User::class, 'user_id');
+  }
 }
