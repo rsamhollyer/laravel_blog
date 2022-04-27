@@ -10,7 +10,6 @@
    <p class="text-center text-3xl">No posts yet. Please check back later.</p>
   @endif
 
-
  </main>
 
 </x-layout>
