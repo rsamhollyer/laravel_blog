@@ -19,7 +19,9 @@ class RegisterController extends Controller {
     ]);
     // No need to check for validation - the method does that for us
 
+    // Don't need to call the mutator function that we created in the User model to hash the password.
     User::create($attributes);
+
     return redirect('/');
   }
 }

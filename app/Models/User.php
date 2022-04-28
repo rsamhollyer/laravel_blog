@@ -39,6 +39,17 @@ class User extends Authenticatable {
   ];
 
 
+
+  public function FunctionName(String $username) {
+    // Accessor function that that title cases a username
+    return ucwords($username);
+  }
+
+  public function setPasswordAttribute(String $password) {
+    // Mutator function that sets a plain text password to a hashed function
+    $this->attributes['password'] = bcrypt($password);
+  }
+
   public function posts() {
     return $this->hasMany(Post::class);
   }
