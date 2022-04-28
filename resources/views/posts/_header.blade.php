@@ -9,8 +9,6 @@
    <x-category-dropdown></x-category-dropdown>
   </div>
 
-
-
   <!-- Search -->
   <div class="relative flex items-center rounded-xl bg-gray-100 px-3 py-2 lg:inline-flex">
    <form method="GET" action="#">
