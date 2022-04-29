@@ -5,10 +5,9 @@
 
   <div class='flex-shrink-0'>
    <img
-    src="https://i.pravatar.cc/60?u={{ $comment->id }}"
+    src="https://i.pravatar.cc/60?u={{ $comment->user_id }}"
     alt="User Avatar"
-    class='rounded-xl'
-   >
+    class='rounded-xl'>
   </div>
 
   <div>
@@ -16,7 +15,7 @@
    <header class='mb-4'>
     <h3 class='fond-bold'>{{ $comment->author->username }}</h3>
     <p class='text-xs'>
-     Posted<time> {{ $comment->created_at->diffForHumans() }}</time>
+     Posted<time> {{ $comment->created_at->format('F j, Y, g:i a') }}</time>
     </p>
    </header>
 

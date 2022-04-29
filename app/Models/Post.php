@@ -43,7 +43,6 @@ use Mews\Purifier\Casts\CleanHtml;
 class Post extends Model {
   use HasFactory;
 
-  protected $guarded = [];
   protected $casts = [
     'body' => CleanHtml::class,
   ];
