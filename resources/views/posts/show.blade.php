@@ -50,7 +50,7 @@
       </a>
 
       <div class="space-x-2">
-       <x-category.category-button :category="$post->category" />
+       <x-category-button :category="$post->category" />
 
       </div>
      </div>
@@ -67,10 +67,9 @@
 
     {{-- Comments Section --}}
     <section class='col-start-5 col-span-8 mt-8 space-y-6'>
-     <x-posts.post-comment />
-     <x-posts.post-comment />
-     <x-posts.post-comment />
-     <x-posts.post-comment />
+     @foreach ($post->comments as $comment)
+      <x-posts.post-comment :comment="$comment" />
+     @endforeach
     </section>
 
    </article>

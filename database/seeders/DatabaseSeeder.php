@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Mews\Purifier\Casts\CleanHtml;
 
@@ -23,12 +22,19 @@ class DatabaseSeeder extends Seeder {
 
   public function run() {
     $user = User::factory()->create(['name' => 'John Doe']);
-    Post::factory(5)->create(['user_id' => $user->id]);
+    $post = Post::factory(5)->create(['user_id' => $user->id]);
+    $comment = Comment::factory(5)->create();
+
     $user2 = User::factory()->create(['name' => 'Mary Sue']);
-    Post::factory(5)->create(['user_id' => $user2->id]);
+    $post2 = Post::factory(5)->create(['user_id' => $user2->id]);
+    $comment2 = Comment::factory(5)->create();
+
     $user3 = User::factory()->create(['name' => 'Bobby Jo']);
-    Post::factory(5)->create(['user_id' => $user3->id]);
+    $post3 = Post::factory(5)->create(['user_id' => $user3->id]);
+    $comment3 = Comment::factory(5)->create();
+
     $user4 = User::factory()->create(['name' => 'Eddy Fred']);
-    Post::factory(5)->create(['user_id' => $user4->id]);
+    $post4 = Post::factory(5)->create(['user_id' => $user4->id]);
+    $comment4 = Comment::factory(5)->create();
   }
 }

@@ -37,6 +37,8 @@ use Mews\Purifier\Casts\CleanHtml;
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
  */
 class Post extends Model {
   use HasFactory;
@@ -88,5 +90,9 @@ class Post extends Model {
 
   public function author() {
     return $this->belongsTo(User::class, 'user_id');
+  }
+
+  public function comments() {
+    return $this->hasMany(Comment::class,);
   }
 }
